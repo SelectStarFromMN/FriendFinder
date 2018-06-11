@@ -8,9 +8,9 @@ The Express Routes have been factored out into logical separations: apiRoutes.js
 
 Answers from the questionaire are stored in an array which is compared element-by-element to each potential friend's stored responses.  To measure compatibility with each potential freind, a running sum of the absolute-value differences are computed and used to identify the friend who answered most closely to the new user's submission.
 
-A modal dialog displays the friend having the closes match to the answers of the new user.  In the case of a tie, the first friend found (in the friends.json datastore) with that score will prevail.  
+A modal dialog displays the friend having the closest match to the answers of the new user.  In the case of a tie, the first friend found (in the friends.json datastore) with that score will prevail.  
 
-Note: An interesting (but predictable) behavior is that upon re-submission, the user will find themself matched to their own entry.  I am considering wheter to exclude one's self from the comparison, but the instructions (and more importantly the live example) support the self-match behavior.  I still think I'm going to change it though.  Yeah I changed it, 'hope that wasn't a design requirement.
+Note: An interesting (but predictable) behavior is that upon re-submission, the user will find themself matched to their own entry.  I am considering whether to exclude one's self from the comparison, but the instructions (and more importantly the live example provided as a guide) support the self-match behavior.  I still think I'm going to change it though.  Yeah I changed it, 'hope that wasn't a design requirement.
 
 API Routes Supported:
 GET "/api/friends"  : response is JSON object array of all entries in the friends.json file datastore.
