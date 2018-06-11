@@ -13,7 +13,7 @@ module.exports = function (app) {
 
     app.post("/api/friends", function (request, response) {
         // console.log(request.body)
-        var friendMatch = findFriendMatch(request.body.scores);
+        var friendMatch = findFriendMatch(request.body.scores, request.body.name);
         response.json({ name: friendMatch.name, photo: friendMatch.photo });
 
         // see if the user already exists and add to system if not
@@ -24,12 +24,12 @@ module.exports = function (app) {
     });
 }
 
-// Given an array of scores from the new user prospect,
+// Given an array of scores from the new user prospect (and username to preclude self-match),
 // loop through all of the friends in friendsArray and using their respective scoresarray
 //   compute a compatibility score between the new user and each friend in the array.
 // Keep track of the best match (lowest score), and friendsArray index for the best match.
 // Return the friend having the best compatibility match.
-function findFriendMatch(scores) {
+function findFriendMatch(scores, username) {
     var lowestDelta = 1000;
     var friendIndex = 0;
     // friendIndex = Math.floor(Math.random() * scores.length); // Random friend
@@ -37,7 +37,7 @@ function findFriendMatch(scores) {
         var tempDelta = computeMatchProfileScore(scores, friendsArray[i].scores);
         // console.log("currIndex: " + i);
         // console.log("tempDelta: " + tempDelta);
-        if (tempDelta < lowestDelta) {
+        if ((tempDelta < lowestDelta) && (friendsArray[i].name != username)) {
             lowestDelta = tempDelta;
             friendIndex = i;
             // console.log("lowestDelta: " + lowestDelta);
