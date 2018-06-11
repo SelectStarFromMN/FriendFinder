@@ -2,7 +2,7 @@
 
 Welcome to FriendFinder!  Answer a few simple questions and the magic of computer science will identify a friend for you!
 
-FriendFinder is a simple website demonstrating the use of a Node + Express backend web server architecture.  There is a single data-structure (an array of potential friend objects), utilizing a JSON file as a datastore.
+FriendFinder is a simple website demonstrating the use of a Node + Express backend web server architecture.  There is a single data-structure (an array of potential friend objects), utilizing a JSON file (friends.json) as a datastore.
 
 The Express Routes have been factored out into logical separations: apiRoutes.js and htmlRoutes.js source files.  The htmlRoutes serve up html files for GET requests using Express' sendFile method.  The apiRoutes serve up JSON for get requests and manipulate the datasource (JSON file) for POST requests.
 
